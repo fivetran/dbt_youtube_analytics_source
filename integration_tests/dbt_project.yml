@@ -1,0 +1,21 @@
+name: 'youtube_source_integration_tests'
+version: '0.1.0'
+profile: 'integration_tests'
+config-version: 2
+
+vars:
+  youtube_source:
+    channel_basic: "{{ ref('youtube_channel_basic_data') }}"
+
+seeds:
+  youtube_source_integration_tests:
+    youtube_channel_basic_data:
+      +column_types:
+        annotation_click_through_rate: FLOAT64
+        annotation_close_rate: FLOAT64
+        average_view_duration_percentage: FLOAT64
+        average_view_duration_seconds: FLOAT64
+        card_click_rate: FLOAT64
+        card_teaser_click_rate: FLOAT64
+        red_watch_time_minutes: FLOAT64
+        watch_time_minutes:  FLOAT64

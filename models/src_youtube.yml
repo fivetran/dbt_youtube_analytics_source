@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: youtube
+    schema: "{{ var('youtube_schema', 'youtube_analytics') }}"
+    database: "{{ var('youtube_database', target.database) }}"
+    loader: Fivetran
+    loaded_at_field: _fivetran_synced
+    tables:
+      - name: channel_basic
+        identifier: channel_basic_a_2
