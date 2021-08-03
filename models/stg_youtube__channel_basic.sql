@@ -22,6 +22,7 @@ fields as (
 final as (
     
     select 
+        _fivetran_id,
         date as date_day,
         likes,
         dislikes,

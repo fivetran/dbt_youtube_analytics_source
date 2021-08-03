@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_youtube__channel_basic
+    columns:
+      - name: _fivetran_id
+        tests:
+          - unique
+          - not_null
