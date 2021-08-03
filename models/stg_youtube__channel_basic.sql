@@ -22,11 +22,21 @@ fields as (
 final as (
     
     select 
-        _fivetran_id,
-        date as date_day,
-        likes,
-        dislikes,
-        shares
+        _fivetran_id, 
+        date as date_day, 
+        _fivetran_synced, 
+        average_view_duration_percentage / 100.0 as average_view_duration_percentage, 
+        average_view_duration_seconds, 
+        channel_id, 
+        comments, 
+        dislikes, 
+        likes, 
+        shares, 
+        subscribers_gained, 
+        subscribers_lost, 
+        video_id, 
+        views, 
+        watch_time_minutes
     from fields
 )
 
