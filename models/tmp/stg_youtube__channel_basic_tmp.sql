@@ -1,1 +1,2 @@
-select * from {{ var('channel_basic') }}
+select * 
+from {{ var('channel_basic') }}

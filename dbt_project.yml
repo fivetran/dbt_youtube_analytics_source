@@ -5,4 +5,13 @@ require-dbt-version: ">=0.20.0"
 
 vars:
   youtube_source:
-    channel_basic: "{{ source('youtube','channel_basic') }}"
+    channel_basic:        "{{ source('youtube','channel_basic') }}"
+    channel_demographics: "{{ source('youtube','channel_demographics') }}"
+    video_metadata:       "{{ source('youtube_metadata','videos') }}"
+
+models:
+  youtube_source:
+    +materialized: table
+    +schema: stg_youtube
+    tmp:
+      +materialized: view
