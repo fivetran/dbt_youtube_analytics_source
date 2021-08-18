@@ -22,6 +22,19 @@ jobs:
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
       - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --target spark --full-refresh
+            dbt run --vars '{hubspot_marketing_enabled: true, hubspot_sales_enabled: false}' --target spark
+            dbt run --vars '{hubspot_marketing_enabled: false, hubspot_sales_enabled: true}' --target spark
+            dbt run --vars '{hubspot_marketing_enabled: false, hubspot_sales_enabled: false}' --target spark
+            dbt test --target spark
+      - run:
           name: "Run Tests - Redshift"
           command: |
             . venv/bin/activate

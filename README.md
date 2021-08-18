@@ -1,0 +1,97 @@
+[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![dbt logo and version](https://img.shields.io/static/v1?logo=dbt&label=dbt-version&message=0.20.x&color=orange)
+# YouTube Analytics (Source)
+This package models YouTube Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/youTube-analytics). It uses data in the format described by the [Channel Reports schemas](https://fivetran.com/docs/applications/youTube-analytics#schemainformation).
+
+## Models
+This package contains staging models, designed to work simultaneously with our [YouTube Analytics modeling package](https://github.com/fivetran/dbt_youtube_analytics). The staging models name columns consistently across all packages:
+ * Boolean fields are prefixed with `is_` or `has_`
+ * Timestamps are appended with `_timestamp`
+ * ID primary keys are prefixed with the name of the table. For example, the video_metadata table's ID column is renamed `video_id`.
+
+## Installation Instructions
+Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
+
+Include in your `packages.yml`
+
+```yaml
+packages:
+  - package: fivetran/youtube_analytics_source
+    version: [">=0.1.0", "<0.2.0"]
+```
+## Configuration
+By default, this package will look for your YouTube Analytics data in the `youtube_analytics` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics data is, please add the following configuration to your `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+    youtube_analytics_schema: your_schema_name
+    youtube_analytics_database: your_database_name 
+```
+## YouTube Video Metadata
+The Fivetran YouTube Analytics connector currently does not support video metadata. As such, it may be difficult to derive analysis from individual videos without understanding which video the record relates to. To alleviate this pain point, we have provided a solution which will allow you to create a [Fivetran Functions Connector](https://fivetran.com/docs/functions) that will sync your YouTube video metadata into a table in your warehouse. This dbt package can then use the video metadata table to enrich your Fivetran YouTube Analytics reporting data. For more on how to create the Functions Connector, you can refer to our [YouTube Analytics Video Metadata Cloud Function](to_be_created_write-up_link_here) write up which provides detailed steps and code on how to configure the function. 
+
+### Enable Video Metadata
+By default the video metadata functionality within this package is disabled. If you have successfully configured the cloud function above to sync your video metadata into the `video` table then you will want to enable the package to incorporate the metadata into your package. You may use the below variable configuration in your `dbt_project.yml` to enable this functionality.
+```yml
+vars:
+  youtube__using_video_metadata: true # false by default
+```
+
+### Video Metadata Schema Configuration
+By default, this package will look for your `video` YouTube Analytics metadata table in the `youtube_metadata_schema` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics metadata table is, please add the following configuration to your `dbt_project.yml` file:
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+    youTube_metadata_schema: your_schema_name
+    youTube_analytics_database: your_database_name 
+```
+### Changing the Build Schema
+By default this package will build the YouTube Analytics staging models within a schema titled (<target_schema> + `_stg_youtube_analytics`) in your target database. If this is not where you would like your YouTube Analytics staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+models:
+    youtube_analytics_source:
+      +schema: my_new_schema_name # leave blank for just the target_schema
+```
+## Database Support
+This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks.
+
+### Databricks Dispatch Configuration
+dbt `v0.20.0` introduced a new project-level dispatch configuration that enables an "override" setting for all dispatched macros. If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+```yml
+# dbt_project.yml
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+```
+
+## Contributions
+Additional contributions to this package are very welcome! Please create issues
+or open PRs against `master`. Check out 
+[this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
+on the best workflow for contributing to a package.
+
+## Resources:
+- Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
+- Have questions, feedback, or need help? Book a time during our office hours [using Calendly](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or email us at solutions@fivetran.com
+- Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
+- Learn how to orchestrate [dbt transformations with Fivetran](https://fivetran.com/docs/transformations/dbt)
+- Learn more about Fivetran overall [in our docs](https://fivetran.com/docs)
+- Check out [Fivetran's blog](https://fivetran.com/blog)
+- Learn more about dbt [in the dbt docs](https://docs.getdbt.com/docs/introduction)
+- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
+- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
+- Find [dbt events](https://events.getdbt.com) near you
+- Check out [the dbt blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
