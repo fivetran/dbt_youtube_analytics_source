@@ -5,7 +5,9 @@ config-version: 2
 
 vars:
   youtube_source:
-    channel_basic: "{{ ref('youtube_channel_basic_data') }}"
+    channel_basic:        "{{ ref('youtube_channel_basic_data') }}"
+    channel_demographics: "{{ ref('youtube_channel_demographics_data') }}"
+    video_metadata:       "{{ ref('youtube_video_metadata_data') }}"
 
 seeds:
   youtube_source_integration_tests:
