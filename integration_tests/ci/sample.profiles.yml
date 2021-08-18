@@ -15,12 +15,12 @@ integration_tests:
       pass: "{{ env_var('CI_REDSHIFT_DBT_PASS') }}"
       dbname: "{{ env_var('CI_REDSHIFT_DBT_DBNAME') }}"
       port: 5439
-      schema: youtube_source_integration_tests
+      schema: youtube_analytics_source_integration_tests
       threads: 8
     spark:
       type: spark
       method: http
-      schema: youtube_source_integration_tests
+      schema: youtube_analytics_source_integration_tests
       host: "{{ env_var('CI_SPARK_DBT_HOST') }}"
       organization: "{{ env_var('CI_SPARK_DBT_ORGANIZATION') }}"
       token: "{{ env_var('CI_SPARK_DBT_TOKEN') }}"
@@ -36,14 +36,14 @@ integration_tests:
       pass: "{{ env_var('CI_POSTGRES_DBT_PASS') }}"
       dbname: "{{ env_var('CI_POSTGRES_DBT_DATABASE') }}"
       port: 5432
-      schema: youtube_source_integration_tests
+      schema: youtube_analytics_source_integration_tests
       threads: 8
     bigquery:
       type: bigquery
       method: service-account
       keyfile: "{{ env_var('GCLOUD_SERVICE_KEY_PATH') }}"
       project: 'dbt-package-testing'
-      schema: youtube_source_integration_tests
+      schema: youtube_analytics_source_integration_tests
       threads: 8
     snowflake:
       type: snowflake
@@ -53,5 +53,5 @@ integration_tests:
       role: "{{ env_var('CI_SNOWFLAKE_DBT_ROLE') }}"
       database: "{{ env_var('CI_SNOWFLAKE_DBT_DATABASE') }}"
       warehouse: "{{ env_var('CI_SNOWFLAKE_DBT_WAREHOUSE') }}"
-      schema: youtube_source_integration_tests
+      schema: youtube_analytics_source_integration_tests
       threads: 8
