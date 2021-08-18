@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: youtube_analytics
     schema: "{{ var('youtube_analytics_schema', 'youtube_analytics') }}"
-    database: "{{ var('youtube_analytics_database', target.database) }}"
+    database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
     loaded_at_field: _fivetran_synced
     tables:
@@ -71,7 +71,7 @@ sources:
 
   - name: youtube_metadata
     schema: "{{ var('youtube_metadata_schema', 'youtube_analytics_metadata') }}"
-    database: "{{ var('youtube_analytics_database', target.database) }}"
+    database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
     loaded_at_field: _fivetran_synced
     tables:
