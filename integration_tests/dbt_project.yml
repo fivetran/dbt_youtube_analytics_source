@@ -8,6 +8,7 @@ vars:
     channel_basic:        "{{ ref('youtube_channel_basic_data') }}"
     channel_demographics: "{{ ref('youtube_channel_demographics_data') }}"
     video_metadata:       "{{ ref('youtube_video_metadata_data') }}"
+  youtube__using_video_metadata: true
 
 seeds:
   youtube_analytics_integration_tests:

@@ -47,34 +47,26 @@ models:
         tests:
           - unique
           - not_null
-      - name: date_day
-        description: The date the video was viewed
-      - name: video_id
-        description: Unique ID of the video
       - name: _fivetran_synced
         description: Timestamp of when the record was synced by Fivetran
-      - name: average_view_duration_percentage
-        description: Average view duration calculated as a percentage
-      - name: average_view_duration_seconds
-        description: Average view duration calculated in seconds
+      - name: age_group
+        description: The age group the individual. Ranges follow the format of 'AGE_[min age]_[max age]'
       - name: channel_id
-        description: Unique identifier of the video channel
-      - name: comments
-        description: Number of comments the posted towards the video
-      - name: dislikes
-        description: Number of dislikes the video received
-      - name: likes
-        description: Number of likes the video received
-      - name: shares
-        description: Number of times the video was shared
-      - name: subscribers_gained
-        description: Number of subscribers gained
-      - name: subscribers_lost
-        description: Number of subscribers lost
-      - name: views
-        description: Number of views the video received
-      - name: watch_time_minutes
-        description: Total watch time the video received in minutes
+        description: Reference of channel which the video belongs
+      - name: country_code
+        description: Country code where the individual who watched the video is located
+      - name: date_day
+        description: Date the video was watched
+      - name: gender
+        description: Gender of the user who watched the video. Either 'MALE', 'FEMALE', or 'GENDER_OTHER'
+      - name: live_or_on_demand
+        description: Indicates if the video was watched live or on demand. Either 'live' or 'on_demand'
+      - name: subscribed_status
+        description: Indicates if the viewer was subscribed when watching the video. Either 'not_subscribed' or `subscribed`
+      - name: video_id
+        description: Unique reference ID of the video
+      - name: views_percentage
+        description: Total percent of views the user makes up for the video
 
   - name: stg_youtube__video_metadata
     description: >
