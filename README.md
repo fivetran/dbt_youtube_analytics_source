@@ -46,7 +46,7 @@ As a workaround, you can create a [Functions connector](https://fivetran.com/doc
 
 ### Enable Video Metadata
 
-By default, the video metadata functionality within this package is disabled. If you have [configured a cloud function to sync your video metadata into a `VIDEOS` table](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/README.md#youtube-video-metadata), you must enable the package to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
+By default, the video metadata functionality within this package is disabled. If you have [configured a cloud function to sync your video metadata into a `VIDEOS` table](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/README.md#youtube-video-metadata), you must enable the video metadata functionality to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
 
 ```yml
 # dbt_project.yml
