@@ -39,12 +39,15 @@ vars:
     youtube_analytics_database: your_database_name 
 ```
 ### YouTube Video Metadata
-The Fivetran YouTube Analytics connector currently does not support video metadata. As such, it may be difficult to derive analysis from individual videos without understanding which video belongs to which record. 
 
-To alleviate this pain point, we have provided a solution which will allow you to create a [Fivetran Functions Connector](https://fivetran.com/docs/functions) that will sync your YouTube video metadata into a table in your warehouse. This dbt package can then use the `videos` metadata table to enrich your Fivetran YouTube Analytics reporting data. For more on how to create the Functions Connector, you can refer to our [YouTube Analytics Video Metadata Cloud Function](to_be_created_write-up_link_here) write up which provides detailed steps and code on how to configure the function. 
+The Fivetran YouTube Analytics connector currently does not support video metadata. Consequently, it may be difficult to analyze individual video data without knowing which video belongs to which record. 
+
+As a workaround, you can create a [Functions connector](https://fivetran.com/docs/functions) that syncs your YouTube video metadata into a table in your destination. This dbt package can then use the `VIDEOS` metadata table to enrich your YouTube Analytics reporting data. To learn more about creating a Functions connector, read our [YouTube Analytics Video Metadata Cloud Function article](to_be_created_write-up_link_here). It provides code and detailed steps on how to configure the function. 
 
 ### Enable Video Metadata
-By default the video metadata functionality within this package is disabled. If you have successfully configured the cloud function above to sync your video metadata into the `videos` table then you will want to enable the package to incorporate the metadata into your package. You may use the below variable configuration in your `dbt_project.yml` to enable this functionality:
+
+By default, the video metadata functionality within this package is disabled. If you have [configured a cloud function to sync your video metadata into a `VIDEOS` table](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/README.md#youtube-video-metadata), you must enable the video metadata functionality to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
+
 ```yml
 # dbt_project.yml
 
@@ -54,7 +57,8 @@ vars:
 ```
 
 ### Video Metadata Schema Configuration
-By default, this package will look for your `videos` YouTube Analytics metadata table in the `youtube_metadata_schema` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics metadata table is, please add the following configuration to your `dbt_project.yml` file:
+
+By default, this package will look for your `VIDEOS` YouTube Analytics metadata table in the `youtube_metadata_schema` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics metadata table is, please add the following configuration to your `dbt_project.yml` file:
 ```yml
 # dbt_project.yml
 
@@ -65,8 +69,9 @@ vars:
     youTube_metadata_schema: your_schema_name
     youTube_analytics_database: your_database_name 
 ```
-### Specifying the Source Table Names
-This package assumes that the `channel_basic_a2` and `channel_demographics_a1` reports are named accordingly. If these reports have different names in your destination, enter the correct names in the `channel_basic_table_name` and/or `channel_demographics_table_name` variables in your `dbt_project.yml` so that the package may find them:
+### Specifying Source Table Names
+
+This package assumes that the `channel_basic_a2` and `channel_demographics_a1` reports are named accordingly. If these reports have different names in your destination, enter the correct names in the `channel_basic_table_name` and/or `channel_demographics_table_name` variables in your `dbt_project.yml` so that the package can find them:
 
 ```yml
 # dbt_project.yml
@@ -76,8 +81,10 @@ vars:
   youtube__channel_basic_table:         "my_channel_basic_table_name"
   youtube__channel_demographics_table:  "demographics_youtube_report"
 ```
+
 ### Changing the Build Schema
-By default this package will build the YouTube Analytics staging models within a schema titled (<target_schema> + `_stg_youtube_analytics`) in your target database. If this is not where you would like your YouTube Analytics staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+By default, this package will build the YouTube Analytics staging models within a schema titled (`<target_schema>` + `_stg_youtube_analytics`) in your target database. If this is not where you would like your YouTube Analytics staging data to be written to, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -87,11 +94,14 @@ models:
     youtube_analytics_source:
       +schema: my_new_schema_name # leave blank for just the target_schema
 ```
+
 ## Database Support
+
 This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks.
 
 ### Databricks Dispatch Configuration
-dbt `v0.20.0` introduced a new project-level dispatch configuration that enables an "override" setting for all dispatched macros. If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+dbt `v0.20.0` introduced a new project-level dispatch configuration that enables an "override" setting for all dispatched macros. If you are using a Databricks destination with this package, you will need to add the dispatch configuration below (or a variation of the below) within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+
 ```yml
 # dbt_project.yml
 
