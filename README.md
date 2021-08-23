@@ -69,6 +69,16 @@ vars:
     youTube_metadata_schema: your_schema_name
     youTube_analytics_database: your_database_name 
 ```
+### Disable Demographics Report
+This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are not syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
+```yml
+# dbt_project.yml
+
+...
+vars:
+  youtube__using_channel_demographics: false # true by default
+```
+
 ### Specifying Source Table Names
 
 This package assumes that the `channel_basic_a2` and `channel_demographics_a1` reports are named accordingly. If these reports have different names in your destination, enter the correct names in the `channel_basic_table_name` and/or `channel_demographics_table_name` variables in your `dbt_project.yml` so that the package can find them:

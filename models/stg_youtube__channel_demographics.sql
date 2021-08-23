@@ -32,7 +32,7 @@ final as (
         gender,
         live_or_on_demand,
         subscribed_status,
-        views_percentage,
+        views_percentage / 100.0 as views_percentage,
         _fivetran_synced
     from fields
 )

@@ -63,7 +63,7 @@ sources:
           - name: live_or_on_demand
             description: Indicates if the video was watched live or on demand. Either 'live' or 'on_demand'
           - name: subscribed_status
-            description: Indicates if the viewer was subscribed when watching the video. Either 'not_subscribed' or `subscribed`
+            description: Indicates if the viewer was subscribed when watching the video. Either 'not_subscribed' or 'subscribed'
           - name: video_id
             description: Unique reference ID of the video
           - name: views_percentage
