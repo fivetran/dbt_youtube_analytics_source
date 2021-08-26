@@ -8,7 +8,7 @@ sources:
     loaded_at_field: _fivetran_synced
     tables:
       - name: channel_basic
-        identifier: "{{ var('youtube__channel_basic_table', 'channel_basic_a2') }}"
+        identifier: "{{ var('youtube__channel_basic_table', 'channel_basic_a_2') }}"
         description: Provides user activity statistics related to a channel and its videos
         columns:
           - name: _fivetran_id
@@ -43,7 +43,7 @@ sources:
             description: Total watch time the video received in minutes
   
       - name: channel_demographics
-        identifier: "{{ var('youtube__channel_demographics_table', 'channel_demographics_a1') }}"
+        identifier: "{{ var('youtube__channel_demographics_table', 'channel_demographics_a_1') }}"
         description: Aggregates viewing statistics based on viewers' age group and gender.
         columns:
           - name: _fivetran_id
