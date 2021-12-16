@@ -4,3 +4,4 @@ dbt_modules/
 logs/
 logs/
 .DS_Store
+dbt_packages/
