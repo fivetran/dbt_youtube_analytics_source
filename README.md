@@ -3,7 +3,7 @@
 This package models YouTube Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics#youtubeanalytics). It uses data in the format described by the [YouTube Channel Report schemas](https://fivetran.com/docs/applications/youtube-analytics#schemainformation).
 
 ## Models
-This package contains staging models, designed to work simultaneously with our [YouTube Analytics modeling package](https://github.com/fivetran/dbt_youtube_analytics). The staging models name columns consistently across all packages:
+This package contains staging models, designed to work simultaneously with our [YouTube Analytics transform package](https://github.com/fivetran/dbt_youtube_analytics). The staging models name columns consistently across all packages:
  * Boolean fields are prefixed with `is_` or `has_`
  * Timestamps are appended with `_timestamp`
  * ID primary keys are prefixed with the name of the table. For example, the video_metadata table's ID column is renamed `video_id`.
