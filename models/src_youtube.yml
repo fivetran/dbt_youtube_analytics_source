@@ -69,14 +69,14 @@ sources:
           - name: views_percentage
             description: Total percent of views the user makes up for the video
 
-  - name: video_metadata
-    identifier: "{{ var('youtube_analytics__video_metadata_identifier', 'VIDEOS') }}"
+  - name: youtube_metadata
     schema: "{{ var('youtube_metadata_schema', 'youtube_analytics_metadata') }}"
     database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
     loaded_at_field: _fivetran_synced
     tables:
       - name: videos
+        identifier: "{{ var('youtube_analytics__video_metadata_identifier', 'VIDEOS') }}"
         description: >
           Table containing individual video metadata. This table IS NOT synced by Fivetran. However, you may easily configure a Fivetran Cloud Function
           as shown in our [blog post](tbd) to sync your Youtube video metadata to a table in your warehouse and have this dbt package generate the video
