@@ -100,8 +100,8 @@ This package assumes that the `channel_basic_a_2` and `channel_demographics_a_1`
 
 ...
 vars:
-  youtube__channel_basic_table:         "my_channel_basic_table_name"
-  youtube__channel_demographics_table:  "demographics_youtube_report"
+  youtube_analytics__channel_basic_identifier:         "my_channel_basic_table_name"
+  youtube_analytics__channel_demographics_identifier:  "demographics_youtube_report"
 ```
 
 ### Changing the Build Schema
