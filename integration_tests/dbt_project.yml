@@ -4,10 +4,11 @@ profile: 'integration_tests'
 config-version: 2
 
 vars:
+  youtube_schema: youtube_analytics_source_integration_tests
   youtube_analytics_source:
-    channel_basic:        "{{ ref('youtube_channel_basic_data') }}"
-    channel_demographics: "{{ ref('youtube_channel_demographics_data') }}"
-    video_metadata:       "{{ ref('youtube_video_metadata_data') }}"
+    youtube_analytics__channel_basic_identifier:        "channel_basic"
+    youtube_analytics__channel_demographics_identifier: "channel_demographic"
+    youtube_analytics__video_metadata_identifier:       "video_metadata"
   youtube__using_video_metadata: true
 
 seeds:

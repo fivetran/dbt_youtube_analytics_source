@@ -8,7 +8,7 @@ sources:
     loaded_at_field: _fivetran_synced
     tables:
       - name: channel_basic
-        identifier: "{{ var('youtube__channel_basic_table', 'channel_basic_a_2') }}"
+        identifier: "{{ var('youtube_analytics__channel_basic_identifier', 'channel_basic_a_2') }}"
         description: Provides user activity statistics related to a channel and its videos
         columns:
           - name: _fivetran_id
@@ -43,7 +43,7 @@ sources:
             description: Total watch time the video received in minutes
   
       - name: channel_demographics
-        identifier: "{{ var('youtube__channel_demographics_table', 'channel_demographics_a_1') }}"
+        identifier: "{{ var('youtube_analytics__channel_demographics_identifier', 'channel_demographics_a_1') }}"
         description: Aggregates viewing statistics based on viewers' age group and gender.
         columns:
           - name: _fivetran_id
@@ -70,6 +70,7 @@ sources:
             description: Total percent of views the user makes up for the video
 
   - name: youtube_metadata
+    identifier: "{{ var('youtube_analytics__video_metadata_identifier', 'VIDEOS') }}"
     schema: "{{ var('youtube_metadata_schema', 'youtube_analytics_metadata') }}"
     database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
