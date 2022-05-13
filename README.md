@@ -31,7 +31,7 @@ Include the following jira_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/youtube_analytics_source
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 ```
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `youtube` schema. If this is not where your Youtube data is (for example, if your Youtube schema is named `youtube_fivetran`), add the following configuration to your root `dbt_project.yml` file:

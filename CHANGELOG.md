@@ -1,3 +1,5 @@
+# dbt_youtube_analytics_source v0.3.0
+
 # dbt_youtube_analytics_source v0.2.1
 - Updated the default schema reference for video metadata
 # dbt_youtube_analytics_source v0.2.0
