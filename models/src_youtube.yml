@@ -69,7 +69,7 @@ sources:
           - name: views_percentage
             description: Total percent of views the user makes up for the video
 
-  - name: youtube_metadata
+  - name: video_metadata
     identifier: "{{ var('youtube_analytics__video_metadata_identifier', 'VIDEOS') }}"
     schema: "{{ var('youtube_metadata_schema', 'youtube_analytics_metadata') }}"
     database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
