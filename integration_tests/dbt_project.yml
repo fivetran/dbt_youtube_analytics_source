@@ -4,7 +4,8 @@ profile: 'integration_tests'
 config-version: 2
 
 vars:
-  youtube_schema: youtube_analytics_source_integration_tests
+  youtube_analytics_schema: youtube_analytics_source_integration_tests
+  youtube_metadata_schema: youtube_analytics_source_integration_tests
   youtube_analytics_source:
     youtube_analytics__channel_basic_identifier:        "youtube_channel_basic_data"
     youtube_analytics__channel_demographics_identifier: "youtube_channel_demographics_data"
