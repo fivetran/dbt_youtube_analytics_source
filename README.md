@@ -15,7 +15,7 @@
 
 # YouTube Source dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_source/))
 # 📣 What does this dbt package do?
-- Cleans, tests, and prepares your Youtube data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube) for analysis.
+- Cleans, tests, and prepares your Youtube data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics) for analysis.
 - Generates a comprehensive data dictionary of your Youtube data through the [dbt docs site](https://fivetran.github.io/dbt_youtube_source/)
 - Materializes staging tables that leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/youtube/#schemainformation). These tables are designed to work simultaneously with our [Youtube modeling package](https://github.com/fivetran/dbt_youtube). Learn more about these models on the [dbt docs site](https://fivetran.github.io/dbt_youtube_source/#!/overview/jira_source/models/?g_v=1).
 
