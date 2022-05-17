@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# YouTube Source dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_source/))
+# YouTube Source dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_analytics_source/))
 # 📣 What does this dbt package do?
 - Cleans, tests, and prepares your Youtube data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics) for analysis.
 - Generates a comprehensive data dictionary of your Youtube data through the [dbt docs site](https://fivetran.github.io/dbt_youtube_source/)
