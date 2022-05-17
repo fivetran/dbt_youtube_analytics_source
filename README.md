@@ -33,14 +33,7 @@ packages:
   - package: fivetran/youtube_analytics_source
     version: [">=0.3.0", "<0.4.0"]
 ```
-## Step 3: Define database and schema variables
-By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube data is (for example, if your Youtube schema is named `youtube_fivetran`), add the following configuration to your root `dbt_project.yml` file:
-```yml
-vars:
-    youtube_database: your_destination_name
-    youtube_schema: your_schema_name 
-```
-## Step 4: Required configurations
+## Step 3: Required configurations
 ### Disable Demographics Report
 This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are not syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
 ```yml
@@ -56,16 +49,25 @@ To use this package you will need to pull the following YouTube Analytics report
 - [channel_demographics_a1](https://developers.google.com/youtube/reporting/v1/reports/channel_reports#video-viewer-demographics) (optional)
 - [videos metadata table](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide-2) (optional)
 
+## Step 4: Define database and schema variables
+
+Define database and schema variables
+By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube data is (for example, if your Youtube schema is named `youtube_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+```yml
+vars:
+    youtube_database: your_destination_name
+    youtube_schema: your_schema_name 
+```
 ## (Optional) Step 5: Additional configurations
 <details><summary>Expand to view configurations</summary>
 
-### YouTube Video Metadata
+### Including YouTube Video Metadata
 
 The Fivetran YouTube Analytics connector currently does not support video metadata. Consequently, it may be difficult to analyze individual video data without knowing which video belongs to which record. 
 
 As a workaround, you can create a [Functions connector](https://fivetran.com/docs/functions) that syncs your YouTube video metadata into a table in your destination. This dbt package can then use the `VIDEOS` metadata table to enrich your YouTube Analytics reporting data. To learn more about creating a Functions connector, read our [YouTube Analytics Video Metadata Cloud Function article](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide-2). It provides code and detailed steps on how to configure the function. 
 
-### Enable Video Metadata
+### Enabling Video Metadata
 
 By default, the video metadata functionality within this package is disabled. If you have [configured a cloud function to sync your video metadata into a `VIDEOS` table](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/README.md#youtube-video-metadata), you must enable the video metadata functionality to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
 
@@ -77,7 +79,7 @@ vars:
   youtube__using_video_metadata: true # false by default
 ```
 
-### Video Metadata Schema Configuration
+### Configuring Video Metadata Schema 
 
 By default, this package will look for your `VIDEOS` YouTube Analytics metadata table in the `youtube_analytics_metadata` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics metadata table is, please add the following configuration to your `dbt_project.yml` file:
 ```yml
