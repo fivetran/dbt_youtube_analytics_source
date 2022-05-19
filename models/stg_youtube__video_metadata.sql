@@ -27,7 +27,7 @@ final as (
         title,
         description,
         thumbnails,
-        published_at,
+        cast (published_at as {{ dbt_utils.type_timestamp() }}) as published_at,
         channel_title,
         _fivetran_batch,
         _fivetran_index,
