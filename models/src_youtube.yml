@@ -71,7 +71,7 @@ sources:
 
   - name: youtube_metadata
     schema: "{{ var('youtube_metadata_schema', 'youtube_analytics_metadata') }}"
-    database: "{% if target.type != '!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
+    database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
     loaded_at_field: _fivetran_synced
     tables:
