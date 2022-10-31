@@ -10,6 +10,6 @@ vars:
 models:
   youtube_analytics_source:
     +materialized: table
-    +schema: stg_youtube
+    +schema: youtube_source
     tmp:
       +materialized: view

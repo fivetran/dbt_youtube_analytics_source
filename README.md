@@ -36,9 +36,8 @@ dispatch:
 
 ## Step 2: Install the package
 Include the following twitter_source package version in your `packages.yml` file.
-> TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
-
-> Do NOT add this if you have added the [Youtube Analytics Transformation](https://github.com/fivetran/dbt_youtube_analytics) package to your `packages.yml` file.
+> Do NOT add this if you have added the [Youtube Analytics Transformation](https://github.com/fivetran/dbt_youtube_analytics) package to your `packages.yml` file. 
+> Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ```yml
 # packages.yml
@@ -63,7 +62,7 @@ To use this package you will need to pull the following YouTube Analytics report
 - [channel_demographics_a1](https://developers.google.com/youtube/reporting/v1/reports/channel_reports#video-viewer-demographics) (optional)
 - [videos metadata table](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide-2) (optional)
 
-## (Recommended) Step 5: Use Youtube Video Metadata
+## (Recommended) Step 5: Using Youtube Video Metadata
 
 ### Step 5a: Sync Video Metada 
 
@@ -96,12 +95,11 @@ vars:
     youtube_analytics_database: your_database_name 
 ```
 
-## Step 6: Disable Demographics Report
-This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are not syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
+## Step 6: Disabling Demographics Report
+This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are _not_ syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
 ```yml
 # dbt_project.yml
 
-...
 vars:
   youtube__using_channel_demographics: false # true by default
 ```
@@ -120,7 +118,7 @@ models:
         +schema: my_new_schema_name # leave blank for just the target_schema
 ```
 
-### Specifying Source Table Names
+### Specify Source Table Names
 
 This package assumes that the `channel_basic_a_2` and `channel_demographics_a_1` reports are named accordingly. If these reports have different names in your destination, enter the correct names in the `channel_basic_table_name` and/or `channel_demographics_table_name` variables in your `dbt_project.yml` so that the package can find them:
 
