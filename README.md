@@ -13,7 +13,7 @@
 # YouTube Analytics Source dbt ([Docs](https://fivetran.github.io/dbt_youtube_analytics_source/#!/overview))
 
 # 📣 What does this dbt package do?
-- Materializes [Youtube Analytics staging tables](https://fivetran.github.io/dbt_youtube_analytics_source/#!/overview/youtube_analytics_source?g_v=1) which leverage data in the format described by the [YouTube Channel Report schemas](https://fivetran.com/docs/applications/youtube-analytics#schemainformationn). These staging tables clean, test, and prepare your Youtube Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics#youtubeanalytics) for analysis by doing the following:
+- Materializes [Youtube Analytics staging tables](https://fivetran.github.io/dbt_youtube_analytics_source/#!/overview/youtube_analytics_source?g_v=1) which leverage data in the format described by the [YouTube Channel Report schemas](https://fivetran.com/docs/applications/youtube-analytics#schemainformation). These staging tables clean, test, and prepare your Youtube Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics#youtubeanalytics) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
@@ -35,7 +35,7 @@ dispatch:
 ```
 
 ## Step 2: Install the package
-Include the following twitter_source package version in your `packages.yml` file.
+Include the following youtube_analytics_source package version in your `packages.yml` file.
 > Do NOT add this if you have added the [Youtube Analytics Transformation](https://github.com/fivetran/dbt_youtube_analytics) package to your `packages.yml` file. 
 > Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
@@ -47,7 +47,7 @@ packages:
 ```
 
 ## Step 3: Define database and schema variables
-By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your twitter schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your youtube schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -72,7 +72,7 @@ As a workaround, you can create a [Functions connector](https://fivetran.com/doc
 
 ### Step 5b: Enable Video Metadata
 
-By default, the video metadata functionality within this package is disabled. If you have [configured a cloud function to sync your video metadata into a `VIDEOS` table](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/README.md#youtube-video-metadata), you must enable the video metadata functionality to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
+By default, the video metadata functionality within this package is disabled. If you have completed Step 5a and onfigured a cloud function to sync your video metadata into a `VIDEOS` table, you must also enable the video metadata functionality to incorporate the metadata into your package. You may use the variable configuration below in your `dbt_project.yml` to enable this functionality:
 
 ```yml
 # dbt_project.yml
