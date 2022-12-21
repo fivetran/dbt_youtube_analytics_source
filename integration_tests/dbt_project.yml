@@ -1,17 +1,16 @@
-name: 'youtube_analytics_integration_tests'
-version: '0.2.1'
+name: 'youtube_analytics_source_integration_tests'
+version: '0.3.0'
 profile: 'integration_tests'
 config-version: 2
-
 vars:
   youtube_analytics_source:
-    channel_basic:        "{{ ref('youtube_channel_basic_data') }}"
+    channel_basic: "{{ ref('youtube_channel_basic_data') }}"
     channel_demographics: "{{ ref('youtube_channel_demographics_data') }}"
-    video_metadata:       "{{ ref('youtube_video_metadata_data') }}"
+    video_metadata: "{{ ref('youtube_video_metadata_data') }}"
   youtube__using_video_metadata: true
-
+  youtube_analytics_schema: youtube_analytics_source_integrations_tests
 seeds:
-  youtube_analytics_integration_tests:
+  youtube_analytics_source_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
     youtube_channel_basic_data:
       +column_types:
@@ -22,4 +21,9 @@ seeds:
         card_click_rate: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         card_teaser_click_rate: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         red_watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
-        watch_time_minutes:  "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+        watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']

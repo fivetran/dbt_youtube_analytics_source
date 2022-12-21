@@ -1,17 +1,15 @@
 name: 'youtube_analytics_source'
-version: '0.2.1'
+version: '0.3.0'
 config-version: 2
-require-dbt-version: [">=1.0.0", "<2.0.0"]
-
+require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   youtube_analytics_source:
     channel_basic: "{{ source('youtube_analytics','channel_basic') }}"
     channel_demographics: "{{ source('youtube_analytics','channel_demographics') }}"
     video_metadata: "{{ source('youtube_metadata','videos') }}"
-
 models:
   youtube_analytics_source:
     +materialized: table
-    +schema: stg_youtube
+    +schema: youtube_source
     tmp:
       +materialized: view
