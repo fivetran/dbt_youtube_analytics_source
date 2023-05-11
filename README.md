@@ -34,7 +34,7 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-## Step 2: Install the package
+## Step 2: Install the package (skip if also using the `youtube_analytics` transformation package)
 Include the following youtube_analytics_source package version in your `packages.yml` file.
 > Do NOT add this if you have added the [Youtube Analytics Transformation](https://github.com/fivetran/dbt_youtube_analytics) package to your `packages.yml` file. 
 > Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
@@ -43,7 +43,7 @@ Include the following youtube_analytics_source package version in your `packages
 # packages.yml
 packages:
   - package: fivetran/youtube_analytics_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.3.0", "<0.4.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 
 ## Step 3: Define database and schema variables
