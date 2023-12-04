@@ -20,7 +20,7 @@ dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
 ## UPDATE FOR VARS HERE, IF NO VARS, PLEASE REMOVE
-dbt run --vars '{youtube__using_video_metadata: False, youtube__using_channel_demographics: False}' --target "$db" --full-refresh
+dbt run --vars '{youtube__using_channel_demographics: False}' --target "$db" --full-refresh
 dbt test --target "$db"
 ### END VARS CHUNK, REMOVE IF NOT USING
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"
