@@ -7,7 +7,7 @@ vars:
     youtube_analytics_channel_basic_a_2_identifier: "youtube_channel_basic_data"
     youtube_analytics_channel_demographics_a_1_identifier: "youtube_channel_demographics_data"
     youtube_analytics_video_identifier: "youtube_video_data"
-  youtube_analytics_schema: youtube_analytics_source_integrations_tests_1
+  youtube_analytics_schema: youtube_analytics_integrations_tests_1
 
 seeds:
   youtube_analytics_source_integration_tests:
@@ -22,7 +22,6 @@ seeds:
         card_teaser_click_rate: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         red_watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
-
 
 dispatch:
   - macro_namespace: dbt_utils
