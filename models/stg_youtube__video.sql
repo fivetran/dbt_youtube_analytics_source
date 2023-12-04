@@ -20,7 +20,19 @@ fields as (
 final as (
     
     select 
-        _fivetran_synced,
+        id as video_id,
+        snippet_title as video_title,
+        snippet_description as video_description,
+        snippet_published_at as video_published_at,
+        snippet_channel_title as channel_title,
+        snippet_thumbnails as video_thumbnails,
+        snippet_category_id as video_category_id,
+        snippet_channel_id as channel_id,
+        snippet_default_audio_language as video_default_audio_language,
+        snippet_default_language as video_default_language,
+        snippet_live_broadcast_content as video_live_broadcast_content,
+        snippet_localized as video_localized,
+        snippet_tags as video_tags,
         content_details_caption,
         content_details_definition,
         content_details_dimension,
@@ -30,24 +42,11 @@ final as (
         content_details_projection,
         content_details_region_restriction,
         etag,
-        id,
         kind,
         player_embed_height,
         player_embed_html,
         player_embed_width,
         privacy_status,
-        snippet_category_id,
-        snippet_channel_id,
-        snippet_channel_title,
-        snippet_default_audio_language,
-        snippet_default_language,
-        snippet_description,
-        snippet_live_broadcast_content,
-        snippet_localized,
-        snippet_published_at,
-        snippet_tags,
-        snippet_thumbnails,
-        snippet_title,
         statistics_comment_count,
         statistics_dislike_count,
         statistics_favorite_count,
@@ -61,7 +60,8 @@ final as (
         status_publish_at,
         status_rejection_reason,
         status_self_declared_made_for_kids,
-        upload_status
+        upload_status,
+        _fivetran_synced
     from fields
 )
 

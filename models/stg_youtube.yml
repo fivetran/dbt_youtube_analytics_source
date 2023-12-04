@@ -94,7 +94,7 @@ models:
         description: Identifies the region restrictions of the video
       - name: etag
         description: Electronic tag of the video
-      - name: id
+      - name: video_id
         description: Unique identifier of the video
         tests:
           - not_null
@@ -109,30 +109,30 @@ models:
         description: The width of the embedded video player
       - name: privacy_status
         description: Identifies if the video is either `public`, `private`, or `unlisted`.
-      - name: snippet_category_id
-        description: Lookup id of the snippet category
-      - name: snippet_channel_id
-        description: Lookup id of the snippet channel
-      - name: snippet_channel_title
-        description: Title of the snippet channel
-      - name: snippet_default_audio_language
-        description: Identifies the default audio language of the snippet video
-      - name: snippet_default_language
-        description: Identifies the default language of the snippet video
-      - name: snippet_description
-        description: Description of the snippet video
-      - name: snippet_live_broadcast_content
+      - name: video_category_id
+        description: Lookup id of the video category
+      - name: video_channel_id
+        description: Lookup id of the video channel
+      - name: video_channel_title
+        description: Title of the channel which the video belongs
+      - name: video_default_audio_language
+        description: Identifies the default audio language of the video video
+      - name: video_default_language
+        description: Identifies the default language of the video video
+      - name: video_description
+        description: Description of the video video
+      - name: video_live_broadcast_content
         description: The content of the live broadcast
-      - name: snippet_localized
-        description: json object containing the localized snippet details
-      - name: snippet_published_at
-        description: Timestamp of when the snippet was published
-      - name: snippet_tags
-        description: Tags associated with the snippet
-      - name: snippet_thumbnails
-        description: Thumbnail of the snippet
-      - name: snippet_title
-        description: Title of the snippet
+      - name: video_localized
+        description: json object containing the localized video details
+      - name: video_published_at
+        description: Timestamp of when the video was published
+      - name: video_tags
+        description: Tags associated with the video
+      - name: video_thumbnails
+        description: Thumbnail of the video
+      - name: video_title
+        description: Title of the video
       - name: statistics_comment_count
         description: Count of comments on the video
       - name: statistics_dislike_count
