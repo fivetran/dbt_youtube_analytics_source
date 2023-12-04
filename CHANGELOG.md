@@ -1,11 +1,11 @@
 # dbt_youtube_analytics_source v0.4.0
 
 ## 🚨 Breaking Changes 🚨:
-- Removed support for the `video_metadata` Cloud Function generated source table and downstream models. This also means the following variables are no longer used or necessary within the package:
+- Removed support for the `video_metadata` Cloud Function generated source table and downstream models. This also means the following variables are no longer used or necessary within the package: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
   - `youtube__using_video_metadata`
   - `youtube_metadata_schema`
   - `youtube_analytics_database`
-- To be consistent with our other packages, the identifier variables have been updated. Please see the following changes to the identifier variables used in this package.
+- To be consistent with our other packages, the identifier variables have been updated. Please see the following changes to the identifier variables used in this package. ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
 
 | **old identifier name** | **new identifier name** |
 | ------------------------|-------------------------|
@@ -14,14 +14,14 @@
 
 
 ## Feature Updates
-- Following the latest update to **all** Fivetran YouTube Analytics connectors, the `video` metadata is now synced as part of the connector by default. Therefore, the `video` source along with the following staging models have been added:
+- Following the latest update to **all** Fivetran YouTube Analytics connectors, the `video` metadata is now synced as part of the connector by default. Therefore, the `video` source along with the following staging models have been added: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
   - `stg_youtube__video_tmp`
   - `stg_youtube__video`
 
 ## Under the Hood:
-- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([#10](https://github.com/fivetran/dbt_youtube_analytics_source/pull/10))
-- Updated the pull request [templates](/.github). ([#10](https://github.com/fivetran/dbt_youtube_analytics_source/pull/10))
-- Included auto-releaser GitHub Actions workflow to automate future releases
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([PR #10](https://github.com/fivetran/dbt_youtube_analytics_source/pull/10))
+- Updated the pull request [templates](/.github). ([PR #10](https://github.com/fivetran/dbt_youtube_analytics_source/pull/10))
+- Included auto-releaser GitHub Actions workflow to automate future releases. ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
 
 # dbt_youtube_analytics_source v0.3.0
 
