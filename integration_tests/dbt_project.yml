@@ -22,6 +22,9 @@ seeds:
         card_teaser_click_rate: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         red_watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
         watch_time_minutes: "{{ 'float64' if target.type == 'bigquery' else 'float' }}"
+    youtube_video_data:
+      +column_types:
+        snippet_thumbnails: "{{ 'string' if target.type in ('bigquery','spark','databricks') else 'varchar' }}"
 
 dispatch:
   - macro_namespace: dbt_utils
