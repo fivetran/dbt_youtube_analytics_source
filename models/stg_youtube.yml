@@ -71,6 +71,11 @@ models:
     description: >
       Table containing individual video metadata such as the title, channel, description, thumbnails, and other video information.
     columns:
+      - name: video_id
+        description: Unique identifier of the video
+        tests:
+          - not_null
+          - unique
       - name: _fivetran_synced
         description: Timestamp of when the record was synced by Fivetran
       - name: content_details_caption
@@ -91,11 +96,6 @@ models:
         description: Identifies the region restrictions of the video
       - name: etag
         description: Electronic tag of the video
-      - name: video_id
-        description: Unique identifier of the video
-        tests:
-          - not_null
-          - unique
       - name: kind
         description: Identifies the type of video (ie. video, short, etc.)
       - name: player_embed_height
