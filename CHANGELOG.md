@@ -1,3 +1,8 @@
+# dbt_youtube_analytics_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#15](https://github.com/fivetran/dbt_youtube_analytics_source/pull/15))
+
 # dbt_youtube_analytics_source v0.4.0
 
 The following changes were all made as a result of the [latest updates to the Fivetran YouTube Analytics connector](https://fivetran.com/docs/applications/youtube-analytics/changelog#june2023).
