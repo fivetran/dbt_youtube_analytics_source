@@ -14,6 +14,12 @@ fields as (
                 staging_columns=get_video_columns()
             )
         }}
+        
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='youtube_analytics_union_schemas', 
+            union_database_variable='youtube_analytics_union_databases') 
+        }}
+
     from base
 ),
 
@@ -61,7 +67,8 @@ final as (
         status_rejection_reason,
         status_self_declared_made_for_kids,
         upload_status,
-        _fivetran_synced
+        _fivetran_synced,
+        source_relation
     from fields
 )
 

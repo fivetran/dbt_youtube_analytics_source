@@ -16,6 +16,11 @@ fields as (
             )
         }}
         
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='youtube_analytics_union_schemas', 
+            union_database_variable='youtube_analytics_union_databases') 
+        }}
+
     from base
 ),
 
@@ -36,7 +41,8 @@ final as (
         subscribers_lost, 
         video_id, 
         views, 
-        watch_time_minutes
+        watch_time_minutes,
+        source_relation
     from fields
 )
 
