@@ -2,7 +2,7 @@
 
 {{
     fivetran_utils.union_data(
-        table_identifier='channel_demographics', 
+        table_identifier='channel_demographics_a_1', 
         database_variable='youtube_analytics_database', 
         schema_variable='youtube_analytics_schema', 
         default_database=target.database,
