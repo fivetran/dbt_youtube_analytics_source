@@ -9,6 +9,11 @@
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#15](https://github.com/fivetran/dbt_youtube_analytics_source/pull/15))
 
+## Under the Hood
+- Updated the source table references in order to execute the union macro successfully.
+- Updated the uniqueness tests to include `source_relation`.
+- Updated Copyright and README format.
+
 # dbt_youtube_analytics_source v0.4.0
 
 The following changes were all made as a result of the [latest updates to the Fivetran YouTube Analytics connector](https://fivetran.com/docs/applications/youtube-analytics/changelog#june2023).
