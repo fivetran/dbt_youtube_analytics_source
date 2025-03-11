@@ -17,6 +17,11 @@ fields as (
             )
         }}
         
+        {{ fivetran_utils.source_relation(
+            union_schema_variable='youtube_analytics_union_schemas', 
+            union_database_variable='youtube_analytics_union_databases') 
+        }}
+        
     from base
 ),
 
@@ -33,7 +38,8 @@ final as (
         live_or_on_demand,
         subscribed_status,
         views_percentage / 100.0 as views_percentage,
-        _fivetran_synced
+        _fivetran_synced,
+        source_relation
     from fields
 )
 

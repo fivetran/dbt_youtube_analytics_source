@@ -7,7 +7,7 @@ sources:
     loader: Fivetran
     loaded_at_field: _fivetran_synced
     tables:
-      - name: channel_basic
+      - name: channel_basic_a_2
         identifier: "{{ var('youtube_analytics_channel_basic_a_2_identifier', 'channel_basic_a_2') }}"
         description: Provides user activity statistics related to a channel and its videos
         columns:
@@ -42,7 +42,7 @@ sources:
           - name: watch_time_minutes
             description: Total watch time the video received in minutes
   
-      - name: channel_demographics
+      - name: channel_demographics_a_1
         identifier: "{{ var('youtube_analytics_channel_demographics_a_1_identifier', 'channel_demographics_a_1') }}"
         description: Aggregates viewing statistics based on viewers' age group and gender.
         columns:
