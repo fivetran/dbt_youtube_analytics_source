@@ -75,7 +75,7 @@ If you have multiple Youtube Analytics connections in Fivetran and would like to
 vars:
     ##You may set EITHER the schemas variables below
     youtube_analytics_union_schemas: ['youtube_analytics_one','youtube_analytics_two']
- 
+
     ##Or may set EITHER the databases variables below
     youtube_analytics_union_databases: ['youtube_analytics_one','youtube_analytics_two']
 ```
@@ -93,7 +93,7 @@ models:
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_youtube_analytics_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
-    
+
 ```yml
 # dbt_project.yml
 vars:

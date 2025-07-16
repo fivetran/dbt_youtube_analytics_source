@@ -10,6 +10,8 @@ vars:
   youtube_analytics_schema: youtube_analytics_source_integrations_tests_1
 
 seeds:
+  +docs:
+    show: False
   youtube_analytics_source_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
     youtube_channel_basic_data:
@@ -29,3 +31,6 @@ seeds:
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
+flags:
+  send_anonymous_usage_stats: False
+  use_colors: True
